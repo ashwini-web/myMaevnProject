@@ -1,6 +1,8 @@
-FROM openjdk:11.0.10-jre-slim
-RUN mkdir /app
+FROM maven:3.6.3-jdk-11-slim
 WORKDIR /app
-COPY dockdemo.jar dockdemo.jar
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src src
+RUN mvn package
 EXPOSE 8080
-ENTRYPOINT ["java" ,"-jar" ,"dockdemo.jar"]
+ENTRYPOINT ["java" ,"-jar" ,"target/dockdemo.jar"]
