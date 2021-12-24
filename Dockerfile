@@ -5,4 +5,4 @@ RUN mvn dependency:go-offline
 COPY src src
 RUN mvn package
 EXPOSE 8080
-ENTRYPOINT ["java" ,"-jar" ,"target/dockdemo.jar"]
+ENTRYPOINT ["java" ,"-jar" ,"dockdemo.jar"]
